@@ -205,7 +205,7 @@ function SearchContent() {
                 </div>
                 <div className="hidden sm:block h-px flex-1 bg-zinc-200 dark:bg-zinc-800 ml-8" />
               </div>
-              <div className="p-12 sm:p-16 rounded-[3rem] bg-[#5D5FEF] shadow-2xl shadow-[#5D5FEF]/20 text-white">
+              <div className="p-12 sm:p-16 rounded-[3rem] bg-white dark:bg-zinc-900 shadow-[0_20px_50px_rgba(0,0,0,0.05)] dark:shadow-none border border-zinc-100 dark:border-zinc-800 text-zinc-800 dark:text-zinc-100">
                 {potential}
               </div>
             </section>
