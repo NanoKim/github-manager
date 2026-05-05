@@ -1,2 +1,1 @@
-# github-manager
-github-manager
+github manager
