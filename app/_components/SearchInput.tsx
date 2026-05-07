@@ -18,17 +18,12 @@ export default function SearchInput({ className = "" }: { className?: string }) 
     e.preventDefault();
     if (!userId.trim()) return;
 
-    // 1. 현재 경로(pathname)가 무엇인지 확인합니다.
     let targetPath = pathname;
 
-    // 2. 만약 메인('/')이거나, 경로에 'user'가 포함되지 않은 엉뚱한 곳이라면 
-    // 기본 검색 페이지인 '/user/search'로 보냅니다.
     if (pathname === "/" || !pathname.includes("/user/")) {
       targetPath = "/user/search";
     }
 
-    // 3. 기존 쿼리 파라미터는 싹 무시하고 'username'만 새로 설정해서 이동합니다.
-    // 이렇게 해야 URL이 꼬이지 않습니다.
     router.push(`${targetPath}?username=${encodeURIComponent(userId.trim())}`);
   };
 
