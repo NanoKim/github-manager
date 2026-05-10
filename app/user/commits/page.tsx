@@ -41,9 +41,11 @@ function CommitsContent() {
         <div className="w-full max-w-lg text-center space-y-8">
           <div className="space-y-2">
             <h2 className="text-5xl md:text-7xl font-black text-zinc-200 dark:text-zinc-800/50 uppercase italic select-none">Commits</h2>
-            <p className="text-zinc-400 font-medium tracking-widest text-xs uppercase">Enter GitHub ID to track activity</p>
+            <p className="text-zinc-400 dark:text-zinc-500 font-medium tracking-widest text-xs md:text-sm uppercase">Enter GitHub ID to track activity</p>
           </div>
-          <SearchInput className="scale-110" />
+          <div className="relative z-10 scale-110 md:scale-125">
+            <SearchInput />
+          </div>
         </div>
       </div>
     );
