@@ -2,7 +2,6 @@
 
 import { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
-import SearchInput from "../../_components/SearchInput";
 import LoadingSpinner from "../../_components/LoadingSpinner";
 import ErrorMessage from "../../_components/ErrorMessage";
 
@@ -37,33 +36,24 @@ function CommitsContent() {
 
   if (!username) {
     return (
-      <div className="min-h-[70vh] flex flex-col items-center justify-center p-6">
-        <div className="w-full max-w-lg text-center space-y-8">
-          <div className="space-y-2">
-            <h2 className="text-5xl md:text-7xl font-black text-zinc-200 dark:text-zinc-800/50 uppercase italic select-none">Commits</h2>
-            <p className="text-zinc-400 dark:text-zinc-500 font-medium tracking-widest text-xs md:text-sm uppercase">Enter GitHub ID to track activity</p>
-          </div>
-          <div className="relative z-10 scale-110 md:scale-125">
-            <SearchInput />
-          </div>
+      <div className="min-h-[70vh] flex flex-col items-center justify-center p-6 text-center">
+        <div className="space-y-4">
+          <h2 className="text-5xl md:text-7xl font-black text-zinc-200 dark:text-zinc-800/50 uppercase italic select-none">Commits</h2>
+          <p className="text-zinc-400 dark:text-zinc-500 font-medium tracking-widest text-xs md:text-sm uppercase">상단 검색창에 ID를 입력하여 활동을 추적하세요</p>
         </div>
       </div>
     );
   }
 
   if (loading) return <div className="min-h-[80vh] flex justify-center items-center"><LoadingSpinner message="커밋 기록을 불러오는 중입니다..." /></div>;
-  if (error) return <div className="max-w-4xl mx-auto pt-20 px-4"><ErrorMessage message={error} /><div className="mt-8 flex justify-center"><SearchInput /></div></div>;
+  
+  if (error) return <div className="max-w-4xl mx-auto pt-20 px-4"><ErrorMessage message={error} /></div>;
 
   return (
     <div className="max-w-5xl mx-auto pb-20 px-4 pt-10">
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
-        <div>
-          <p className="text-[#5D5FEF] font-black text-sm tracking-widest uppercase mb-2">Activity Log</p>
-          <h1 className="text-4xl md:text-6xl font-black tracking-tighter uppercase italic">{username}&apos;s Commits</h1>
-        </div>
-        <div className="w-full md:w-64">
-          <SearchInput />
-        </div>
+      <div className="mb-12">
+        <p className="text-[#5D5FEF] font-black text-sm tracking-widest uppercase mb-2">Activity Log</p>
+        <h1 className="text-4xl md:text-6xl font-black tracking-tighter uppercase italic">{username}&apos;s Commits</h1>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
