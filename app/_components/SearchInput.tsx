@@ -1,9 +1,9 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useRouter, useSearchParams, usePathname } from "next/navigation";
 
-export default function SearchInput({ className = "" }: { className?: string }) {
+function SearchInputContent({ className = "" }: { className?: string }) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const pathname = usePathname();
@@ -24,12 +24,7 @@ export default function SearchInput({ className = "" }: { className?: string }) 
     
     if (!trimmedId) return;
 
-    let targetPath = pathname;
-    if (!pathname.startsWith("/user/")) {
-      targetPath = "/user/search";
-    }
-
-    router.push(`${targetPath}?username=${encodeURIComponent(trimmedId)}`);
+    router.push(`${pathname}?username=${encodeURIComponent(trimmedId)}`);
   };
 
   return (
@@ -57,5 +52,13 @@ export default function SearchInput({ className = "" }: { className?: string }) 
         className="w-full bg-zinc-100 dark:bg-zinc-900 border-none rounded-full py-2 pl-10 pr-4 text-sm focus:ring-2 focus:ring-[#5D5FEF] outline-none transition-all placeholder:text-zinc-400 dark:placeholder:text-zinc-600"
       />
     </form>
+  );
+}
+
+export default function SearchInput({ className = "" }: { className?: string }) {
+  return (
+    <Suspense fallback={<div className="w-full h-9 bg-zinc-100 dark:bg-zinc-900 rounded-full animate-pulse" />}>
+      <SearchInputContent className={className} />
+    </Suspense>
   );
 }

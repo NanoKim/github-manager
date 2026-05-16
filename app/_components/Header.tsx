@@ -4,24 +4,14 @@ import { Suspense } from "react";
 import SearchInput from "./SearchInput";
 
 function HeaderContent() {
-  const openMenu = () => {
-    const aside = document.getElementById('main-aside');
-    const overlay = document.getElementById('aside-overlay');
-    aside?.classList.remove('-translate-x-full');
-    overlay?.classList.remove('hidden');
-  };
-
   return (
     <header className="h-16 border-b border-zinc-200 dark:border-zinc-800 flex items-center justify-between px-6 bg-white/50 dark:bg-black/50 backdrop-blur-md sticky top-0 z-30 gap-4">
       <div className="flex items-center gap-2 md:gap-4 flex-1">
-        <button 
-          onClick={openMenu}
-          className="p-2 -ml-2 md:hidden hover:bg-zinc-100 dark:hover:bg-zinc-900 rounded shrink-0"
-        >
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
-        </button>
+        <img 
+          src="/logo_horizontal.png" 
+          alt="Github Manager Logo" 
+          className="h-9 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+        />
 
         <SearchInput className="max-w-md" />
       </div>
