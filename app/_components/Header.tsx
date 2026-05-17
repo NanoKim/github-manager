@@ -15,10 +15,6 @@ function HeaderContent() {
 
         <SearchInput className="max-w-md" />
       </div>
-      
-      <div className="flex items-center gap-4 shrink-0">
-        <div className="w-8 h-8 rounded-full bg-zinc-200 dark:bg-zinc-700" />
-      </div>
     </header>
   );
 }
